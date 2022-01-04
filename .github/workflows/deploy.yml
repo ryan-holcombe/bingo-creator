@@ -8,7 +8,6 @@ on:
       - main
       
 env:
-  GPC_PROJECT_ID: rholcombe-gke-test
   RUN_REGION: us-central1
   SERVICE_NAME: bingo-creator
   NODE_VERSION: 16.13.1
@@ -55,7 +54,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.SERVICE_NAME }}
+            gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
